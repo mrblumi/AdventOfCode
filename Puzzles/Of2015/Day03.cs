@@ -2,45 +2,24 @@ namespace AdventOfCode.Puzzles.Of2015;
 
 public sealed record Day03() : Puzzle(Year: 2015, Day: 03, "Perfectly Spherical Houses in a Vacuum")
 {
-    protected override int PartOne()
-    {
-        var location = new Location();
-        var hashSet = new HashSet<Location> { location };
+    protected override int PartOne() => Solve(santas: 1);
+    protected override int PartTwo()  => Solve(santas: 2);
 
+    private int Solve(int santas)
+    {
+        var locations = new Location[santas];
+        var visitedHouses = new HashSet<Location> { new() };
+        var currentSanta = 0;
+        
         foreach (var instruction in InputText)
         {
-            location = location.OnNext(instruction);
-            hashSet.Add(location);
+            visitedHouses.Add(locations[currentSanta] = (locations[currentSanta] ?? new()).OnNext(instruction));
+            currentSanta = (currentSanta + 1) % santas;
         }
 
-        return hashSet.Count;
+        return visitedHouses.Count;
     }
-
-    protected override int PartTwo()
-    {
-        var location = new Location();
-        var santasLocation = location;
-        var robotsLocation = location;
-        
-        var hashSet = new HashSet<Location> { location };
-
-        for (var i = 0; i < InputText.Length; i++)
-        {
-            if (i % 2 == 0)
-            {
-                santasLocation = santasLocation.OnNext(InputText[i]);
-                hashSet.Add(santasLocation);
-            }
-            else
-            {
-                robotsLocation = robotsLocation.OnNext(InputText[i]);
-                hashSet.Add(robotsLocation);
-            }
-        }
-
-        return hashSet.Count;
-    }
-
+    
     private sealed record Location(int X = 0, int Y = 0)
     {
         public Location OnNext(char instruction) => instruction switch
