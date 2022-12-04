@@ -15,8 +15,8 @@ public sealed record Day06() : Puzzle(Year: 2015, Day: 06, "Probably a Fire Haza
         .Select(_ => new Light(Point: new Point(X: _ % 1000, Y: _ / 1000)));
 
     private static Func<Light, Light> OnNext(Instruction plan) => light =>
-        light.Point.X.IsBetween(plan.Start.X, plan.End.X) &&
-        light.Point.Y.IsBetween(plan.Start.Y, plan.End.Y)
+        light.Point.X >= plan.Start.X && light.Point.X <= plan.End.X &&
+        light.Point.Y >= plan.Start.Y && light.Point.Y <= plan.End.Y
             ? light with { Brightness = plan.Action.Invoke(light.Brightness) }
             : light;
 
