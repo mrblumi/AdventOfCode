@@ -11,7 +11,6 @@ public sealed record Day04 : Puzzle
         evaluate(_[0] >=_[2] && _[0] <=_[3], _[1] >=_[2] && _[1] <= _[3]) ||
         evaluate(_[2] >= _[0] && _[2] <= _[1], _[3] >= _[0] && _[3] <= _[1]));
 
-    protected override int PartOne() => Solve(evaluate: (left, right) => left && right);
-
-    protected override int PartTwo() => Solve(evaluate: (left, right) => left || right);
+    protected override object PartOne() => Solve(evaluate: (left, right) => left && right);
+    protected override object PartTwo() => Solve(evaluate: (left, right) => left || right);
 }

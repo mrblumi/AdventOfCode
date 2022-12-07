@@ -1,19 +1,17 @@
-using System.Diagnostics;
-
 namespace AdventOfCode.Commons;
 
 public abstract record Puzzle(int Year, int Day, string Description)
 {
-    private string InputFile => $"Puzzles/Of{Year}/Day{Day:00}.input";
+    private readonly string _inputFile = $"Puzzles/Of{Year}/Day{Day:00}.input";
 
     private string? _inputText;
-    protected string InputText => _inputText ??= File.ReadAllText(InputFile);
+    protected string InputText => _inputText ??= File.ReadAllText(_inputFile);
 
     private string[]? _inputLines;
-    protected string[] InputLines => _inputLines ??= File.ReadAllLines(InputFile);
+    protected string[] InputLines => _inputLines ??= File.ReadAllLines(_inputFile);
 
-    protected abstract int PartOne();
-    protected abstract int PartTwo();
+    protected abstract object PartOne();
+    protected abstract object PartTwo();
 
     public void Solve()
     {

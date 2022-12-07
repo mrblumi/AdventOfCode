@@ -11,9 +11,9 @@ public sealed record Day03() : Puzzle(Year: 2022, Day: 03, "Rucksack Reorganizat
     private static int Priority(char c) =>
         c switch { <= 'z' and >= 'a' => c - 'a' + 1, <= 'Z' and >= 'A' => c - 'A' + 27, _ => 0 };
 
-    protected override int PartOne() =>
+    protected override object PartOne() =>
         InputLines.Select(Chunks).Select(Intersection).Sum(Priority);
 
-    protected override int PartTwo() =>
+    protected override object PartTwo() =>
         InputLines.Cast<IEnumerable<char>>().Chunk(3).Select(Intersection).Sum(Priority);
 }

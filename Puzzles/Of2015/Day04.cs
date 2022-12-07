@@ -28,8 +28,8 @@ public sealed record Day04 : Puzzle
         }
     }
 
-    protected override int PartOne() => _withFive;
-    protected override int PartTwo() => _withSix;
+    protected override object PartOne() => _withFive;
+    protected override object PartTwo() => _withSix;
     
     private sealed record Value(int Number)
     {

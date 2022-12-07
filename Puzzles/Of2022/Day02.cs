@@ -27,11 +27,11 @@ public sealed record Day02() : Puzzle(Year: 2022, Day: 02, "Rock Paper Scissors"
         _ => throw new NotSupportedException()
     };
 
-    protected override int PartOne() => InputLines
+    protected override object PartOne() => InputLines
         .Select(_ => (Player: ParseOption(_[2]), Opponent: ParseOption(_[0])))
         .Sum(Score);
 
-    protected override int PartTwo() => InputLines
+    protected override object PartTwo() => InputLines
         .Select(_ => (Instruction: _[2], Opponent: ParseOption(_[0])))
         .Select(_ => (Player: ParseStrategy(_.Instruction).Invoke(_.Opponent), _.Opponent))
         .Sum(Score);

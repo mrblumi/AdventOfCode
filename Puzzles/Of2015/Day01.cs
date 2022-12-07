@@ -19,6 +19,6 @@ public sealed record Day01 : Puzzle
         _finalFloor = floor;
     }
 
-    protected override int PartOne() => _finalFloor;
-    protected override int PartTwo() => _basementAccess;
+    protected override object PartOne() => _finalFloor;
+    protected override object PartTwo() => _basementAccess;
 }

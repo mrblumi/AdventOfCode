@@ -2,8 +2,8 @@ namespace AdventOfCode.Puzzles.Of2015;
 
 public sealed record Day03() : Puzzle(Year: 2015, Day: 03, "Perfectly Spherical Houses in a Vacuum")
 {
-    protected override int PartOne() => Solve(santas: 1);
-    protected override int PartTwo()  => Solve(santas: 2);
+    protected override object PartOne() => Solve(santas: 1);
+    protected override object PartTwo()  => Solve(santas: 2);
 
     private int Solve(int santas)
     {

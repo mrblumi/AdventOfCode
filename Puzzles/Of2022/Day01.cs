@@ -15,6 +15,6 @@ public sealed record Day01 : Puzzle
             .ToArray();
     }
 
-    protected override int PartOne() => _amountOfCaloriesPerElf.Max();
-    protected override int PartTwo() => _amountOfCaloriesPerElf.OrderDescending().Take(3).Sum();
+    protected override object PartOne() => _amountOfCaloriesPerElf.Max();
+    protected override object PartTwo() => _amountOfCaloriesPerElf.OrderDescending().Take(3).Sum();
 }

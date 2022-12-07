@@ -9,8 +9,8 @@ public sealed record Day02 : Puzzle
             .Select(_ => new Present(_))
             .ToArray();
 
-    protected override int PartOne() => _presents.Sum(_ => _.RequiredPaper);
-    protected override int PartTwo() => _presents.Sum(_ => _.RequiredRibbon);
+    protected override object PartOne() => _presents.Sum(_ => _.RequiredPaper);
+    protected override object PartTwo() => _presents.Sum(_ => _.RequiredRibbon);
 
     private sealed class Present
     {
