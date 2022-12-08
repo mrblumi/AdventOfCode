@@ -13,6 +13,8 @@
     
     <ItemGroup>
         <Using Include="AdventOfCode.Commons" />
+        <Using Include="AdventOfCode.Extensions" />
+        <Using Include="System.Int32" Static="True" />
     </ItemGroup>
 
 </Project>

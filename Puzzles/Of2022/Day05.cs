@@ -1,21 +1,20 @@
 namespace AdventOfCode.Puzzles.Of2022;
 
-using static Int32;
-
-public sealed record Day05 : Puzzle
+[Puzzle(2022, 05, "Supply Stacks")]
+public sealed class Day05 : Puzzle<string>
 {
     private sealed record Instruction(int Count, int Source, int Target);
 
     private readonly Instruction[] _instructions;
     private readonly string[] _setup;
 
-    public Day05() : base(Year: 2022, Day: 05, "Supply Stacks")
+    public Day05()
     {
         var separator = Array.IndexOf(InputLines, string.Empty);
 
         _instructions = InputLines[(separator + 1)..]
             .Select(_ => _.Split(" "))
-            .Select(_ => new Instruction(Count: Parse(_[1]), Source: Parse(_[3]), Target: Parse(_[5])))
+            .Select(_ => new Instruction(Count: Parse(_[1]), Source: Parse(_[3]) - 1, Target: Parse(_[5]) - 1))
             .ToArray();
         _setup = InputLines[..separator];
     }
@@ -35,17 +34,17 @@ public sealed record Day05 : Puzzle
 
         foreach (var instruction in _instructions)
         {
-            var source = stacks[instruction.Source - 1];
-            var target = stacks[instruction.Target - 1];
+            var source = stacks[instruction.Source];
+            var target = stacks[instruction.Target];
             var items = Enumerable.Range(0, instruction.Count).Select(_ => source.Pop());
 
             if (orientation != null) items = orientation.Invoke(items);
             items.ForEach(target.Push);
         }
         
-        return string.Join(string.Empty, stacks.Select(_ => _.Pop()));
+        return new string(stacks.Select(_ => _.Pop()).ToArray());
     }
 
-    protected override object PartOne() => Solve();
-    protected override object PartTwo() => Solve(Enumerable.Reverse);
+    protected override string PartOne() => Solve();
+    protected override string PartTwo() => Solve(Enumerable.Reverse);
 }

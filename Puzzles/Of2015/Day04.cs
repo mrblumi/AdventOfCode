@@ -3,7 +3,8 @@ using System.Text;
 
 namespace AdventOfCode.Puzzles.Of2015;
 
-public sealed record Day04 : Puzzle
+[Puzzle(2015, 04, "The Ideal Stocking Stuffer")]
+public sealed class Day04 : Puzzle<int>
 {
     private const string Secret = "yzbqklnj";
     private static readonly MD5 Md5 = MD5.Create();
@@ -11,7 +12,7 @@ public sealed record Day04 : Puzzle
     private readonly int _withFive = 0; 
     private readonly int _withSix = 0; 
 
-    public Day04() : base(Year: 2015, Day: 04, "The Ideal Stocking Stuffer")
+    public Day04()
     {
         using var enumerator = Enumerable
             .Range(0, Int32.MaxValue)
@@ -28,8 +29,8 @@ public sealed record Day04 : Puzzle
         }
     }
 
-    protected override object PartOne() => _withFive;
-    protected override object PartTwo() => _withSix;
+    protected override int PartOne() => _withFive;
+    protected override int PartTwo() => _withSix;
     
     private sealed record Value(int Number)
     {

@@ -1,11 +1,12 @@
 namespace AdventOfCode.Puzzles.Of2015;
 
-public sealed record Day01 : Puzzle
+[Puzzle(2015, 01, "Not Quite Lisp")]
+public sealed class Day01 : Puzzle<int>
 {
     private readonly int _finalFloor;
     private readonly int _basementAccess;
     
-    public Day01() : base(Year: 2015, Day: 01, "Not Quite Lisp")
+    public Day01()
     {
         var input = InputText;
         var floor = 0;
@@ -19,6 +20,6 @@ public sealed record Day01 : Puzzle
         _finalFloor = floor;
     }
 
-    protected override object PartOne() => _finalFloor;
-    protected override object PartTwo() => _basementAccess;
+    protected override int PartOne() => _finalFloor;
+    protected override int PartTwo() => _basementAccess;
 }

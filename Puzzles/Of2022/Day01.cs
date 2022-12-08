@@ -1,20 +1,18 @@
 namespace AdventOfCode.Puzzles.Of2022;
 
-public sealed record Day01 : Puzzle
+[Puzzle(2022, 01, "Calorie Counting")]
+public sealed class Day01 : Puzzle<int>
 {
     private readonly IEnumerable<int> _amountOfCaloriesPerElf;
 
-    public Day01() : base(Year: 2022, Day: 01, "Calorie Counting")
-    {
-        _amountOfCaloriesPerElf = InputText
-            .Split("\n\n", StringSplitOptions.RemoveEmptyEntries)
-            .Select(_ => _
-                .Split("\n", StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse)
-                .Sum())
-            .ToArray();
-    }
+    public Day01() => _amountOfCaloriesPerElf = InputText
+        .Split("\n\n", StringSplitOptions.RemoveEmptyEntries)
+        .Select(_ => _
+            .Split("\n", StringSplitOptions.RemoveEmptyEntries)
+            .Select(Parse)
+            .Sum())
+        .ToArray();
 
-    protected override object PartOne() => _amountOfCaloriesPerElf.Max();
-    protected override object PartTwo() => _amountOfCaloriesPerElf.OrderDescending().Take(3).Sum();
+    protected override int PartOne() => _amountOfCaloriesPerElf.Max();
+    protected override int PartTwo() => _amountOfCaloriesPerElf.OrderDescending().Take(3).Sum();
 }

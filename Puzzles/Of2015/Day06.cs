@@ -2,7 +2,8 @@ namespace AdventOfCode.Puzzles.Of2015;
 
 using static Math;
 
-public sealed record Day06() : Puzzle(Year: 2015, Day: 06, "Probably a Fire Hazard")
+[Puzzle(2015, 06, "Probably a Fire Hazard")]
+public sealed class Day06 : Puzzle<int>
 {
     private record struct Point(int X, int Y);
     private record struct Light(Point Point, int Brightness = 0);
@@ -34,6 +35,6 @@ public sealed record Day06() : Puzzle(Year: 2015, Day: 06, "Probably a Fire Haza
         .Aggregate(seed: Seed, func: OnNext)
         .Sum(_ => _.Brightness);
     
-    protected override object PartOne() => Solve(_ => 1, _ => 0, _ => 1 - _);
-    protected override object PartTwo() => Solve(_ => _ + 1, _ => Max(0, _ - 1), _ => _ + 2);
+    protected override int PartOne() => Solve(_ => 1, _ => 0, _ => 1 - _);
+    protected override int PartTwo() => Solve(_ => _ + 1, _ => Max(0, _ - 1), _ => _ + 2);
 }

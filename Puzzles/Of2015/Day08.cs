@@ -1,8 +1,9 @@
 namespace AdventOfCode.Puzzles.Of2015;
 
-public sealed record Day08() : Puzzle(Year: 2015, Day: 08, "Matchsticks")
+[Puzzle(2015, 08, "Matchsticks")]
+public sealed class Day08 : Puzzle<int>
 {
-    protected override object PartOne()
+    protected override int PartOne()
     {
         int DecodedLength(ReadOnlySpan<char> input) => input switch
         {
@@ -18,7 +19,7 @@ public sealed record Day08() : Puzzle(Year: 2015, Day: 08, "Matchsticks")
             .Sum();
     }
 
-    protected override object PartTwo()
+    protected override int PartTwo()
     {
         int EncodedLength(string input) => input.Length + input.Count("\"\\".Contains) + 2;
 

@@ -1,6 +1,7 @@
 namespace AdventOfCode.Puzzles.Of2022;
 
-public sealed record Day03() : Puzzle(Year: 2022, Day: 03, "Rucksack Reorganization")
+[Puzzle(2022, 03, "Rucksack Reorganization")]
+public sealed class Day03 : Puzzle<int>
 {
     private static IEnumerable<char>[] Chunks(string s) =>
         s.Chunk(s.Length / 2).Cast<IEnumerable<char>>().ToArray();
@@ -11,9 +12,9 @@ public sealed record Day03() : Puzzle(Year: 2022, Day: 03, "Rucksack Reorganizat
     private static int Priority(char c) =>
         c switch { <= 'z' and >= 'a' => c - 'a' + 1, <= 'Z' and >= 'A' => c - 'A' + 27, _ => 0 };
 
-    protected override object PartOne() =>
+    protected override int PartOne() =>
         InputLines.Select(Chunks).Select(Intersection).Sum(Priority);
 
-    protected override object PartTwo() =>
+    protected override int PartTwo() =>
         InputLines.Cast<IEnumerable<char>>().Chunk(3).Select(Intersection).Sum(Priority);
 }
