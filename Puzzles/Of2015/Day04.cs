@@ -15,7 +15,7 @@ public sealed class Day04 : Puzzle<int>
     public Day04()
     {
         using var enumerator = Enumerable
-            .Range(0, Int32.MaxValue)
+            .Range(0, MaxValue)
             .Select(_ => new Value(_))
             .GetEnumerator();
         
