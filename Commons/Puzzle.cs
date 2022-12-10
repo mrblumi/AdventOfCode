@@ -2,7 +2,7 @@ using System.Reflection;
 
 namespace AdventOfCode.Commons;
 
-public abstract class Puzzle<TResult> : IPuzzle
+public abstract class Puzzle<TOne, TTwo> : IPuzzle
 {
     private readonly PuzzleAttribute _attribute;
     private readonly string _inputFile;
@@ -19,8 +19,8 @@ public abstract class Puzzle<TResult> : IPuzzle
     private string[]? _inputLines;
     protected string[] InputLines => _inputLines ??= File.ReadAllLines(_inputFile);
 
-    protected abstract TResult PartOne();
-    protected abstract TResult PartTwo();
+    protected abstract TOne PartOne();
+    protected abstract TTwo PartTwo();
 
     public void Solve()
     {
@@ -29,3 +29,5 @@ public abstract class Puzzle<TResult> : IPuzzle
         Console.WriteLine($"Part two: {PartTwo()}");
     }
 }
+
+public abstract class Puzzle<TRes> : Puzzle<TRes, TRes> { }
