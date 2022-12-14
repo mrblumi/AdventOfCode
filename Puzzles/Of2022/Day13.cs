@@ -1,4 +1,3 @@
-using System.Text.Json;
 using System.Text.Json.Nodes;
 
 namespace AdventOfCode.Puzzles.Of2022;
@@ -13,7 +12,7 @@ public class Day13 : Puzzle<int>
         .Select(_ => JsonNode.Parse(_)!)
         .ToList(); 
 
-    static int CompareNodes(JsonNode? first, JsonNode? second) => (left: first, right: second) switch
+    static int CompareNodes(JsonNode? first, JsonNode? second) => (first, second) switch
     {
         (JsonValue x, JsonValue y) => (int)x - (int)y,
         (JsonValue x, JsonArray y) => CompareArrays(new JsonArray((int)x), y),
