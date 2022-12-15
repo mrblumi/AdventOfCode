@@ -34,8 +34,8 @@ public class Day13 : Puzzle<int>
 
     protected override int PartTwo()
     {
-        var two = JsonNode.Parse("[[2]]");
-        var six = JsonNode.Parse("[[6]]");
+        var two = JsonNode.Parse("[[2]]")!;
+        var six = JsonNode.Parse("[[6]]")!;
         
         _input.Add(two);
         _input.Add(six);

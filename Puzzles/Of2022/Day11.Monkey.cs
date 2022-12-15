@@ -8,7 +8,6 @@ public sealed partial class Day11
     {
         private readonly Func<int, int> _investigate;
 
-        private readonly int _divisor;
         private readonly int _ifTrue;
         private readonly int _ifFalse;
         
@@ -26,11 +25,11 @@ public sealed partial class Day11
                 _ => throw new NotSupportedException()
             };
             
-            Divisor = last(input[3]);
-            _ifTrue = last(input[4]);
-            _ifFalse = last(input[5]);
+            Divisor = Last(input[3]);
+            _ifTrue = Last(input[4]);
+            _ifFalse = Last(input[5]);
             
-            static int last(string s) => Parse(s.Split(' ')[^1]);
+            static int Last(string s) => Parse(s.Split(' ')[^1]);
         }
         
         public long Investigations { get; private set; }

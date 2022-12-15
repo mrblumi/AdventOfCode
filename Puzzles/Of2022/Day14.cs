@@ -7,8 +7,6 @@ using static Math;
 [Puzzle(2022, 14, "Regolith Reservoir")]
 public class Day14 : Puzzle<int>
 {
-    private record Coordinate(int X, int Y);
-
     private readonly IReadOnlyCollection<Coordinate> _scan;
     
     public Day14()

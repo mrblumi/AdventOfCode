@@ -3,7 +3,6 @@ namespace AdventOfCode.Puzzles.Of2022;
 [Puzzle(2022, 12, "Hill Climbing Algorithm")]
 public class Day12 : Puzzle<int>
 {
-    private record struct Coordinate(int X, int Y);
     private record struct Elevation(char Value, char? Symbol = null);
     private record struct Path(Elevation Elevation, int Distance);
     
