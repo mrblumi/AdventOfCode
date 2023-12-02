@@ -31,7 +31,7 @@ public class Day09 : Puzzle<int>
     protected override int PartOne() => _distances.Min();
     protected override int PartTwo() => _distances.Max();
     
-    public sealed record Route(string Start, string Destination)
+    private sealed record Route(string Start, string Destination)
     {
         public IEnumerable<string> Locations { get { yield return Start; yield return Destination; } }
 
