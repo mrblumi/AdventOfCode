@@ -18,4 +18,15 @@ public static class ArrayExtensions
     
     private static void Swap<T>(this T[] self, int i, int j) =>
         (self[i], self[j]) = (self[j], self[i]);
+
+    public static IEnumerable<T[]> Split<T>(this T[] source, T separator)
+    {
+        var index = Array.IndexOf(source, separator);
+        if (index == -1) yield return source;
+        else
+        {
+            yield return source[..index];
+            foreach (var part in source[(index + 1)..].Split(separator)) yield return part;
+        }
+    }
 }

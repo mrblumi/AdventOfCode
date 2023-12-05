@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 namespace AdventOfCode.Puzzles.Of2022;
 
 [Puzzle(2022, 15, "Beacon Exclusion Zone")]
-public class Day15 : Puzzle<int, long>
+public partial class Day15 : Puzzle<int, long>
 {
     private record Sensor(Coordinate Position, Coordinate Beacon)
     {
@@ -15,19 +15,16 @@ public class Day15 : Puzzle<int, long>
 
     private readonly Sensor[] _sensors;
     
-    public Day15()
-    {
-        const string pattern = @".*x=(?<SX>-{0,1}\d+), y=(?<SY>-{0,1}\d+):.*x=(?<BX>-{0,1}\d+), y=(?<BY>-{0,1}\d+)";
-        var regex = new Regex(pattern, RegexOptions.Compiled);
-        
-        _sensors = InputLines
-            .Select(_ => regex.Match(_))
-            .Select(_ => new Sensor(
-                Position: new(Parse(_.Groups["SX"].Value), Parse(_.Groups["SY"].Value)),
-                Beacon: new(Parse(_.Groups["BX"].Value), Parse(_.Groups["BY"].Value))))
-            .ToArray();
-    }
+    public Day15() => _sensors = InputLines
+        .Select(_ => Regex().Match(_))
+        .Select(_ => new Sensor(
+            Position: new(Parse(_.Groups["SX"].Value), Parse(_.Groups["SY"].Value)),
+            Beacon: new(Parse(_.Groups["BX"].Value), Parse(_.Groups["BY"].Value))))
+        .ToArray();
 
+    [GeneratedRegex(@".*x=(?<SX>-{0,1}\d+), y=(?<SY>-{0,1}\d+):.*x=(?<BX>-{0,1}\d+), y=(?<BY>-{0,1}\d+)")]
+    private partial Regex Regex(); 
+    
     protected override int PartOne()
     {
         const int line = 2000000;
