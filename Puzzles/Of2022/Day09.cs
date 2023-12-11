@@ -1,6 +1,6 @@
-using System.Numerics;
-
 namespace AdventOfCode.Puzzles.Of2022;
+
+using static System.Math;
 
 [Puzzle(2022, 09, "Rope Bridge")]
 public sealed class Day09 : Puzzle<int>
@@ -36,8 +36,8 @@ public sealed class Day09 : Puzzle<int>
                 for (var i = 1; i < length; i++)
                 {
                     var distance = knots[i - 1] - knots[i];
-                    if (Math.Max(Math.Abs(distance.X), Math.Abs(distance.Y)) == 2)
-                        knots[i] += new Knot(X: Math.Sign(distance.X), Y: Math.Sign(distance.Y));
+                    if (Max(Abs(distance.X), Abs(distance.Y)) == 2)
+                        knots[i] += new Knot(X: Sign(distance.X), Y: Sign(distance.Y));
                 }
             
                 positions.Add(knots[^1]);

@@ -1,5 +1,7 @@
 namespace AdventOfCode.Puzzles.Of2023;
 
+using static System.Math;
+
 [Puzzle(2023, 04, "Scratchcards")]
 public class Day04 : Puzzle<int>
 {
@@ -13,7 +15,7 @@ public class Day04 : Puzzle<int>
     protected override int PartOne() => _scratchcards
         .Select(card => card.AmountOfWinningNumbersYouHave)
         .Where(amount => amount > 0)
-        .Select(amount => (int)Math.Pow(2, amount - 1))
+        .Select(amount => (int)Pow(2, amount - 1))
         .Sum();
 
     protected override int PartTwo()

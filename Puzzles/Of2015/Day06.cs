@@ -1,6 +1,6 @@
 namespace AdventOfCode.Puzzles.Of2015;
 
-using static Math;
+using static System.Math;
 
 [Puzzle(2015, 06, "Probably a Fire Hazard")]
 public sealed class Day06 : Puzzle<int>

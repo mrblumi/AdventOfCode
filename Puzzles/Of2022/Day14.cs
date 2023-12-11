@@ -1,8 +1,6 @@
-using System.Text;
-
 namespace AdventOfCode.Puzzles.Of2022;
 
-using static Math;
+using static System.Math;
 
 [Puzzle(2022, 14, "Regolith Reservoir")]
 public class Day14 : Puzzle<int>

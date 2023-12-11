@@ -1,5 +1,7 @@
 namespace AdventOfCode.Puzzles.Of2022;
 
+using static System.Math;
+
 [Puzzle(2022, 12, "Hill Climbing Algorithm")]
 public class Day12 : Puzzle<int>
 {
@@ -29,8 +31,8 @@ public class Day12 : Puzzle<int>
             var path = paths[coordinate];
 
             foreach (var neighbour in _map.Keys.Where(to => 
-                 (coordinate.X == to.X && Math.Abs(coordinate.Y - to.Y) == 1) ||
-                 (coordinate.Y == to.Y && Math.Abs(coordinate.X - to.X) == 1)))
+                 (coordinate.X == to.X && Abs(coordinate.Y - to.Y) == 1) ||
+                 (coordinate.Y == to.Y && Abs(coordinate.X - to.X) == 1)))
             {
                 var next = _map[neighbour];
 

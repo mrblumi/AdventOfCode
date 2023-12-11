@@ -2,6 +2,8 @@ using System.Text.RegularExpressions;
 
 namespace AdventOfCode.Puzzles.Of2022;
 
+using static System.Math;
+
 [Puzzle(2022, 15, "Beacon Exclusion Zone")]
 public partial class Day15 : Puzzle<int, long>
 {
@@ -10,7 +12,7 @@ public partial class Day15 : Puzzle<int, long>
         public int Dimension { get; } = Distance(Position, Beacon);
 
         public int Distance(Coordinate other) => Distance(Position, other);
-        private static int Distance(Coordinate a, Coordinate b) => Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
+        private static int Distance(Coordinate a, Coordinate b) => Abs(a.X - b.X) + Abs(a.Y - b.Y);
     }
 
     private readonly Sensor[] _sensors;

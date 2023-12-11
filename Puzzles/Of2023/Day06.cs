@@ -1,5 +1,7 @@
 namespace AdventOfCode.Puzzles.Of2023;
 
+using static System.Math;
+
 [Puzzle(2023, 06, "Wait For It")]
 public class Day06 : Puzzle<int>
 {
@@ -16,13 +18,13 @@ public class Day06 : Puzzle<int>
 
     private static int Calculate(double time, double distanceToBeat)
     {
-        var squareRoot = Math.Sqrt(time * time - 4 * distanceToBeat);
+        var squareRoot = Sqrt(time * time - 4 * distanceToBeat);
         
         var floor = (time + squareRoot) / 2;
         var ceiling = (time - squareRoot) / 2;
 
-        floor = Math.Floor(floor) - (floor % 1 == 0 ? 1 : 0);
-        ceiling = Math.Ceiling(ceiling) + (ceiling % 1 == 0 ? 1 : 0);
+        floor = Floor(floor) - (floor % 1 == 0 ? 1 : 0);
+        ceiling = Ceiling(ceiling) + (ceiling % 1 == 0 ? 1 : 0);
         
         var result = (int)floor - (int)ceiling + 1;
 

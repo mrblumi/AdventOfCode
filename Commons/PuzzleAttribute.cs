@@ -1,15 +1,8 @@
 namespace AdventOfCode.Commons;
 
-public class PuzzleAttribute : Attribute
+public class PuzzleAttribute(int year, int day, string description) : Attribute
 {
-    public PuzzleAttribute(int year, int day, string description)
-    {
-        Year = year;
-        Day = day;
-        Description = description;
-    }
-
-    public int Year { get; }
-    public int Day { get; }
-    public string Description { get; }
+    public int Year { get; } = year;
+    public int Day { get; } = day;
+    public string Description { get; } = description;
 }
