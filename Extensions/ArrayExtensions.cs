@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace AdventOfCode.Extensions;
 
 public static class ArrayExtensions
@@ -14,6 +16,12 @@ public static class ArrayExtensions
             foreach (var permutation in source.Permutations(i + 1)) yield return permutation;
             source.Swap(i, j);
         }
+    }
+
+    public static IEnumerable<T[]> PowerSet<T>(this T[] source)
+    {
+        for (var mask = 0; mask < 1 << source.Length; mask++)
+            yield return source.Where((_, index) => (mask & (1 << index)) != 0).ToArray();
     }
     
     private static void Swap<T>(this T[] self, int i, int j) =>
