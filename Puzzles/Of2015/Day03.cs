@@ -8,7 +8,7 @@ public sealed class Day03 : Puzzle<int>
 
     private int Solve(int santas)
     {
-        var locations = new Location[santas];
+        var locations = new Location?[santas];
         var visitedHouses = new HashSet<Location> { new() };
         var currentSanta = 0;
         

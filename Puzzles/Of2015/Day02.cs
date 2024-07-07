@@ -24,8 +24,8 @@ public sealed class Day02 : Puzzle<int>
             var width = Parse(parts[1]);
             var height = Parse(parts[2]);
 
-            _sides = new[] { length, width, height };
-            _surfaces = new[] { length * width, length * height, width * length };
+            _sides = [length, width, height];
+            _surfaces = [length * width, length * height, width * length];
         }
         
         public int RequiredPaper => _surfaces.Min() + 2 * _surfaces.Sum();

@@ -29,7 +29,7 @@ public class Day07 : Puzzle<int>
             return res;
         }
 
-        return Evaluate("a");
+        return Evaluate(wire);
     }
 
     protected override int PartOne() => Solve(wire: "a", gates: Gates);
