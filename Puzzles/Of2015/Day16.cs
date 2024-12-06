@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 namespace AdventOfCode.Puzzles.Of2015;
 
 [Puzzle(2015, 16, "Aunt Sue")]
-public class Day16 : Puzzle<int>
+public partial class Day16 : Puzzle<int>
 {
     private readonly IReadOnlyCollection<AuntSue> _auntSues;
     private readonly IReadOnlyDictionary<string, int> _factsAboutSue;
@@ -44,7 +44,7 @@ public class Day16 : Puzzle<int>
     private static Func<AuntSue, bool> AuntSueMightHave(Func<int, int, bool> compare, int amount, string of) =>
         auntSue => auntSue.ContainsKey(of) is false || compare(auntSue[of], amount);
     
-    private class AuntSue(IDictionary<string, int> compounds) : Dictionary<string, int>(compounds)
+    private sealed partial class AuntSue(IDictionary<string, int> compounds) : Dictionary<string, int>(compounds)
     {
         public int Number { get; init; }
 
@@ -58,7 +58,8 @@ public class Day16 : Puzzle<int>
             return new(compounds) { Number = int.Parse(matches.Groups["sue"].Value) };
         }
 
-        private static Regex Regex = new(@"Sue (?<sue>\d+): ((?<compound>\w+: \d+)[, ]{0,2})*");
+        [GeneratedRegex(@"Sue (?<sue>\d+): ((?<compound>\w+: \d+)[, ]{0,2})*")]
+        private static partial Regex Regex { get; }
     }
     
     private static bool TheExact(int i, int j) => i == j;

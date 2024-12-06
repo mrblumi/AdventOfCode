@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 namespace AdventOfCode.Puzzles.Of2015;
 
 [Puzzle(2015, 15, "Science for Hungry People")]
-public class Day15 : Puzzle<int>
+public partial class Day15 : Puzzle<int>
 {
     private readonly Ingredients _ingredients;
     
@@ -34,7 +34,7 @@ public class Day15 : Puzzle<int>
                 yield return [..distribution, i];
     }
 
-    private sealed class Ingredients(IEnumerable<string> lines)
+    private sealed partial class Ingredients(IEnumerable<string> lines)
     {
         public IReadOnlyCollection<int[]> List { get; } = lines.Select(Parse).ToArray();
         public int Properties => List.Select(x => x.Length).Distinct().Single();
@@ -46,8 +46,9 @@ public class Day15 : Puzzle<int>
             .Select(x => x.Value)
             .Select(int.Parse)
             .ToArray();
-        
-        private static readonly Regex Regex = new("^.+: capacity (.+), durability (.+), flavor (.+), texture (.+), calories (.+)$");
+
+        [GeneratedRegex("^.+: capacity (.+), durability (.+), flavor (.+), texture (.+), calories (.+)$")]
+        private static partial Regex Regex { get; }
     }
 
     private sealed class Cookie(Ingredients ingredients, int[] amounts)
