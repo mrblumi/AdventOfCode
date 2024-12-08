@@ -23,6 +23,9 @@ public static class ArrayExtensions
         for (var mask = 0; mask < 1 << source.Length; mask++)
             yield return source.Where((_, index) => (mask & (1 << index)) != 0).ToArray();
     }
+
+    public static IEnumerable<T[]> Subsets<T>(this T[] source, int ofLength) =>
+        source.PowerSet().Where(x => x.Length == ofLength);
     
     private static void Swap<T>(this T[] self, int i, int j) =>
         (self[i], self[j]) = (self[j], self[i]);
