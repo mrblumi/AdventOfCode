@@ -12,13 +12,7 @@ public class Day06 : Puzzle<int>
     
     public Day06()
     {
-        
-        var map = new Dictionary<Coordinate, char>();
-        for (var y = 0; y < InputLines.Length; y++)
-        for (var x = 0; x < InputLines[y].Length; x++)
-            map.Add(new(x, y), InputLines[y][x]);
-
-        _map = map.ToImmutableDictionary();
+        _map = Map.Parse(InputLines).ToImmutableDictionary();
         _startPosition = _map.Single(x => x.Value == '^').Key;
         _turnRight =  new(0, -1, 1, 0);
     }

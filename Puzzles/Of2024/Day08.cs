@@ -3,14 +3,9 @@ namespace AdventOfCode.Puzzles.Of2024;
 [Puzzle(2024, 08, "Resonant Collinearity")]
 public class Day08 : Puzzle<int>
 {
-    private readonly Dictionary<Coordinate, char> _map = new();
-    
-    public Day08()
-    {
-        for (var y = 0; y < InputLines.Length; y++)
-        for (var x = 0; x < InputLines[y].Length; x++)
-            _map.Add(new(x, y), InputLines[y][x]);
-    }
+    private readonly IReadOnlyDictionary<Coordinate, char> _map;
+
+    public Day08() => _map = Map.Parse(InputLines);
     
     protected override int PartOne()
     {
