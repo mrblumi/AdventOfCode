@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace AdventOfCode.Extensions;
 
 public static class EnumerableExtensions
@@ -28,4 +30,8 @@ public static class EnumerableExtensions
     {
         foreach (var item in self) action.Invoke(item);
     }
+
+    public static TNumber SumBy<TInput, TNumber>(this IEnumerable<TInput> items, Func<TInput, TNumber> selector)
+        where TNumber : INumber<TNumber> =>
+        items.Aggregate(TNumber.Zero, (current, item) => current + selector.Invoke(item));
 }
